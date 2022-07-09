@@ -5,7 +5,7 @@ import matplotlib.image as mpimg
 import matplotlib.cm as cm
 from matplotlib.colors import LinearSegmentedColormap
 import time
-import cv2
+# import cv2
 import scipy.io
 
 cm_data = [[0.2422, 0.1504, 0.6603],

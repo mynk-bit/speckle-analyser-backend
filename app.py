@@ -48,4 +48,4 @@ def process_image():
     # return jsonify({'msg': 'success'})
 
 if __name__ == "__main__":
-    app.run(host="127.0.0.1", port=56424, debug=True)
+    app.run(debug=True)
