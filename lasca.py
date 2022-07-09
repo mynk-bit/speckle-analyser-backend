@@ -269,7 +269,7 @@ cm_data = [[0.2422, 0.1504, 0.6603],
 parula_map = LinearSegmentedColormap.from_list('parula', cm_data)
 
 
-def myfunc(files, filename):
+def mylasca(files, filename):
     N2 = len(files)
     N1 = 1
     temp = files[0]

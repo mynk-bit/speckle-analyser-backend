@@ -1,10 +1,11 @@
+from tkinter import E
 from flask import Flask, request, jsonify, send_from_directory
 from PIL import Image
 import os 
 import shutil, sys
-from fujji import myfunc
-# from gd import myfunc
-# from lasca import myfunc
+from fujji import myfujji
+from gd import mygd
+from lasca import mylasca
 
 
 
@@ -15,6 +16,7 @@ app = Flask(__name__)
 
 @app.route("/process", methods=["POST"])
 def process_image():
+    methodName = request.args.get("method", default='fujji', type=str)
     files = request.files.getlist('image')
     print(len(files))
     # for file in files:
@@ -22,7 +24,12 @@ def process_image():
     date = datetime.datetime.utcnow()
     tmp = calendar.timegm(date.utctimetuple())
     filename = f'{tmp}' 
-    outputfiles  = myfunc(files, filename) 
+    if methodName == 'fujji':
+        outputfiles  = myfujji(files, filename) 
+    elif methodName == 'lasca':
+        outputfiles  = mylasca(files, filename) 
+    else:
+        outputfiles  = mygd(files, filename)    
     print(outputfiles)     
     image_path = "C:/Users/mkpas/Desktop/Flask/"
     # if os.path.exists(image_path):
